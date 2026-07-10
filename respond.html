@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>填寫可參加時間</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div id="config-error" class="config-error hidden">
+      <h1>調查連結不完整</h1>
+      <p>請向發起人索取新的調查連結。</p>
+    </div>
+
+    <main id="respond-app" class="shell hidden">
+      <section id="meeting-info" class="panel meeting-info"></section>
+
+      <form id="response-form" class="panel">
+        <div class="two-col">
+          <label><span>姓名 <b>*</b></span><input name="participant_name" required autocomplete="name" /></label>
+          <label><span>備註</span><input name="note" /></label>
+        </div>
+
+        <div class="actions">
+          <button class="ghost-btn" type="button" data-quick="all">全選</button>
+          <button class="ghost-btn" type="button" data-quick="weekdays">全選工作日</button>
+          <button class="ghost-btn" type="button" data-quick="clear">清除全部</button>
+        </div>
+
+        <div id="slot-grid" class="calendar-grid selectable"></div>
+        <div id="selection-summary" class="summary-bar"></div>
+
+        <div class="actions">
+          <button class="primary-btn" type="submit">送出回覆</button>
+        </div>
+        <p id="response-status" class="status-line" aria-live="polite"></p>
+      </form>
+    </main>
+
+    <script type="module" src="./js/respond.js"></script>
+  </body>
+</html>

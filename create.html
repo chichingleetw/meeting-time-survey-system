@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>建立會議調查</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div id="config-error" class="config-error hidden">
+      <h1>Google 設定不完整</h1>
+      <p>請先回首頁儲存 Google Form 與 Google Sheet 中繼資料。</p>
+      <a class="primary-btn as-link" href="./index.html">回首頁</a>
+    </div>
+
+    <main id="create-app" class="shell hidden">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">建立調查</p>
+          <h1>候選時間設定</h1>
+        </div>
+        <a class="ghost-btn as-link" href="./index.html">回首頁</a>
+      </header>
+
+      <div class="layout-grid">
+        <form id="meeting-form" class="panel">
+          <label><span>會議名稱 <b>*</b></span><input name="meeting_title" required /></label>
+          <label><span>會議說明</span><textarea name="meeting_description" rows="3"></textarea></label>
+          <label><span>發起人</span><input name="organizer_name" /></label>
+          <div class="two-col">
+            <label><span>開始日期 <b>*</b></span><input name="start_date" type="date" required /></label>
+            <label><span>結束日期 <b>*</b></span><input name="end_date" type="date" required /></label>
+          </div>
+          <div class="three-col">
+            <label><span>開始時間</span><input name="start_time" type="time" step="3600" /></label>
+            <label><span>結束時間</span><input name="end_time" type="time" step="3600" /></label>
+            <label><span>間隔分鐘</span><input name="slot_minutes" type="number" min="60" step="60" readonly /></label>
+          </div>
+          <div class="check-row">
+            <label><input name="include_saturday" type="checkbox" /> <span>包含星期六</span></label>
+            <label><input name="include_sunday" type="checkbox" /> <span>包含星期日</span></label>
+          </div>
+          <label><span>回覆截止時間</span><input name="response_deadline" type="datetime-local" /></label>
+          <div class="actions">
+            <button class="primary-btn" type="submit">建立調查</button>
+            <button class="ghost-btn" type="reset">清除設定</button>
+          </div>
+          <p id="create-status" class="status-line" aria-live="polite"></p>
+        </form>
+
+        <aside class="panel">
+          <div class="section-heading">
+            <p class="eyebrow">預覽</p>
+            <h2>候選時段</h2>
+          </div>
+          <div id="slot-preview" class="calendar-grid"></div>
+        </aside>
+      </div>
+
+      <section id="created-panel" class="panel result-panel hidden">
+        <div class="result-layout">
+          <div>
+            <label><span>meeting_id</span><input id="meeting-id-output" readonly /></label>
+            <label><span>參加者連結</span><textarea id="respond-link" rows="3" readonly></textarea></label>
+            <label><span>結果頁連結</span><textarea id="results-link" rows="3" readonly></textarea></label>
+            <div class="actions">
+              <button class="primary-btn" type="button" data-copy-target="#respond-link">複製參加者連結</button>
+              <button class="ghost-btn" type="button" data-copy-target="#results-link">複製結果頁連結</button>
+            </div>
+          </div>
+          <div id="qr-code" class="qr-code"></div>
+        </div>
+      </section>
+    </main>
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script type="module" src="./js/create.js"></script>
+  </body>
+</html>
