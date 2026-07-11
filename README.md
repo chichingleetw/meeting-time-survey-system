@@ -2,6 +2,8 @@
 
 ![會議時間調查系統介紹](./Intro.png)
 
+直接使用：https://chichingleetw.github.io/meeting-time-survey-system/
+
 這是一個可部署在 GitHub Pages 的會議時間調查工具。系統不需要自有後端、不使用 Google Apps Script，也不要求 Google OAuth；資料透過 Google Form 寫入，並從公開檢視權限的 Google Sheet 讀取 event log 來還原會議設定、參加者回覆與統計結果。
 
 ## 功能
